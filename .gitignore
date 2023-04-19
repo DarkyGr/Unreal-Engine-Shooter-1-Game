@@ -86,4 +86,9 @@ Content/StarterContent/*
 SimpleShooter.code-workspace
 
 #Assets
-Content/*
+# Content/AssetPacks/GameDevTV
+Content/AssetPacks/ModularSciFiSeason1
+Content/AssetPacks/ParagonWraith
+Content/AssetPacks/ShooterGame
+Content/Collections
+Content/Developers

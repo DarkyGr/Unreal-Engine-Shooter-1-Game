@@ -10,6 +10,6 @@ The game was made to learn:
 - Add Player Movement
 - Animation
 - Shooting
-- Add Health / Daeth
+- Add Health / Death
 - Enemy AI
 - Add Win / Lose Conditions
