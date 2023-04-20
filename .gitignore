@@ -87,8 +87,16 @@ SimpleShooter.code-workspace
 
 #Assets
 # Content/AssetPacks/GameDevTV
-Content/AssetPacks/ModularSciFiSeason1
+Content/AssetPacks/ModularSciFiSeason1/StarterBundle/ModularSci_Comm
+Content/AssetPacks/ModularSciFiSeason1/StarterBundle/ModularSci_Int
+Content/AssetPacks/ModularSciFiSeason1/StarterBundle/ModularScifiHallways
+Content/AssetPacks/ModularSciFiSeason1/StarterBundle/ModularSciFiMats
+Content/AssetPacks/ModularSciFiSeason1/StarterBundle/ModularScifiProps
+Content/AssetPacks/ModularSciFiSeason1/StarterBundle/NatureMaterials_Ice
+
 Content/AssetPacks/ParagonWraith
 Content/AssetPacks/ShooterGame
+
 Content/Collections
+
 Content/Developers
