@@ -26,4 +26,11 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+private:
+	// Method to set Move WS
+	void MoveForward(float AxisValue);
+
+	// Method to set Mouse
+	// void LookUp(float AxisValue);
+
 };
