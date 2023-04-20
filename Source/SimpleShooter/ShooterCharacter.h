@@ -30,6 +30,9 @@ private:
 	// Method to set Move WS
 	void MoveForward(float AxisValue);
 
+	// Method to set Move AD
+	void MoveRight(float AxisValue);
+
 	// Method to set Mouse
 	// void LookUp(float AxisValue);
 
