@@ -44,6 +44,11 @@ void AShooterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 
 	// Set Player Jump
 	PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &ACharacter::Jump);
+
+	// Set Player Gamepad on Y (Up & Down)
+	PlayerInputComponent->BindAxis(TEXT("LookUpRate"), this, &AShooterCharacter::LookUpRate);
+
+	
 }
 
 void AShooterCharacter::MoveForward(float AxisValue)
@@ -56,6 +61,12 @@ void AShooterCharacter::MoveRight(float AxisValue)
 {
 	// Set Axis Move with value
 	AddMovementInput(GetActorRightVector() * AxisValue);
+}
+
+void AShooterCharacter::LookUpRate(float AxisValue)
+{
+	// Set Speed based on the World
+	AddControllerPitchInput(AxisValue * RotationRate * GetWorld()->GetDeltaSeconds());
 }
 
 // void AShooterCharacter::LookUp(float AxisValue)

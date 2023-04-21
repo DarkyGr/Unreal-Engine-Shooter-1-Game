@@ -36,4 +36,13 @@ private:
 	// Method to set Mouse
 	// void LookUp(float AxisValue);
 
+	// Method to set Gamepad Look Up
+	void LookUpRate(float AxisValue);
+
+	
+
+	// Varibale to Rotation (Affect FPS)
+	UPROPERTY(EditAnywhere)
+	float RotationRate = 10.f;
+
 };
