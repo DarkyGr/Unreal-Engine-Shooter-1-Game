@@ -39,7 +39,8 @@ private:
 	// Method to set Gamepad Look Up
 	void LookUpRate(float AxisValue);
 
-	
+	// Method to set Gamepad Look Right
+	void LookRightRate(float AxisValue);
 
 	// Varibale to Rotation (Affect FPS)
 	UPROPERTY(EditAnywhere)
