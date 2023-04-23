@@ -23,4 +23,13 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+private:
+	// Create USceneComponent Variable
+	UPROPERTY(VisibleAnywhere)
+	USceneComponent* Root;
+
+	// Create USkeletalMeshComponent Variable
+	UPROPERTY(VisibleAnywhere)
+	USkeletalMeshComponent* Mesh;
+
 };
