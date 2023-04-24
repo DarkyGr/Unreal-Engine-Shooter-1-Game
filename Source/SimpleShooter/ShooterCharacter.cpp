@@ -19,10 +19,10 @@ void AShooterCharacter::BeginPlay()
 	// Get Spawn Actor (Gun) and set to Gun
 	Gun = GetWorld()->SpawnActor<AGun>(GunClass);
 
-	// Hide The gun of skeletal
+	// Hide The gun of skeleton
 	GetMesh()->HideBoneByName(TEXT("weapon_R"), EPhysBodyOp::PBO_None);
 
-	// Set the new socket was created in skeletal
+	// Set the new socket was created in skeleton
 	Gun->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, TEXT("WeaponSocket"));
 
 	// Set the owner to gun
