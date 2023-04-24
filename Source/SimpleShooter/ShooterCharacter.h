@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "ShooterCharacter.generated.h"
 
+class AGun;
 UCLASS()
 class SIMPLESHOOTER_API AShooterCharacter : public ACharacter
 {
@@ -45,5 +46,13 @@ private:
 	// Varibale to Rotation (Affect FPS)
 	UPROPERTY(EditAnywhere)
 	float RotationRate = 10.f;
+
+	// Make Subclassof AGun
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<AGun> GunClass;
+
+	// Make Subclassof AGun
+	UPROPERTY()
+	AGun* Gun;
 
 };
