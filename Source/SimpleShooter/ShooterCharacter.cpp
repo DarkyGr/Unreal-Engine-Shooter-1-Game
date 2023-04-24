@@ -61,6 +61,9 @@ void AShooterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 
 	// Set Player Gamepad on X (Right & Left)
 	PlayerInputComponent->BindAxis(TEXT("LookRightRate"), this, &AShooterCharacter::LookRightRate);
+
+	// Set Left Mouse and Gamepad Tight Trigger for Shoot!
+	PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AShooterCharacter::Shoot);
 }
 
 void AShooterCharacter::MoveForward(float AxisValue)
@@ -85,6 +88,11 @@ void AShooterCharacter::LookRightRate(float AxisValue)
 {
 	// Set Speed based on the World
 	AddControllerYawInput(AxisValue * RotationRate * GetWorld()->GetDeltaSeconds());
+}
+
+void AShooterCharacter::Shoot()
+{
+	Gun->PullTrigger();
 }
 
 // void AShooterCharacter::LookUp(float AxisValue)

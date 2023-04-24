@@ -43,6 +43,9 @@ private:
 	// Method to set Gamepad Look Right
 	void LookRightRate(float AxisValue);
 
+	// Method to shot the gun
+	void Shoot();
+
 	// Varibale to Rotation (Affect FPS)
 	UPROPERTY(EditAnywhere)
 	float RotationRate = 10.f;
