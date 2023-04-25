@@ -51,7 +51,11 @@ void AGun::PullTrigger()
 	if (bSuccess)
 	{
 		// Draw Point on the hit
-		DrawDebugPoint(GetWorld(), Hit.Location, 20, FColor::Red, true);
+		// DrawDebugPoint(GetWorld(), Hit.Location, 20, FColor::Red, true);
+
+		// Adding Particle to Bullet Hit
+		FVector ShotDirection = -Rotation.Vector();
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), HitEffect, Hit.Location, ShotDirection.Rotation());
 	}
 
 	// Draw debug camera when you shoot

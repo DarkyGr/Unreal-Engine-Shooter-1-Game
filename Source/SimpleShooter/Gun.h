@@ -35,11 +35,15 @@ private:
 	UPROPERTY(VisibleAnywhere)
 	USkeletalMeshComponent* Mesh;
 
-	// Create UParticle System
+	// Create UParticle System when you shoot
 	UPROPERTY(EditAnywhere)
 	UParticleSystem* MuzzleFlash;
 
-	// Create Variable to the Max Range but the hit bullet
+	// Create UParticle System when bullet hit
+	UPROPERTY(EditAnywhere)
+	UParticleSystem* HitEffect;
+
+	// Create Variable to the Max Range but the bullet hit
 	UPROPERTY(EditAnywhere)
 	float MaxRange = 1000.f;
 };
