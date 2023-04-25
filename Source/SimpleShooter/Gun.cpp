@@ -4,6 +4,7 @@
 #include "Gun.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "DrawDebugHelpers.h"
 
 // Sets default values
 AGun::AGun()
@@ -26,6 +27,23 @@ void AGun::PullTrigger()
 
 	// Set Particles when you shoot
 	UGameplayStatics::SpawnEmitterAttached(MuzzleFlash, Mesh, TEXT("MuzzleFlashSocket"));
+	
+	// Set the Pawn of the shooter character
+	APawn* OwnerPawn = Cast<APawn>(GetOwner());
+	if (OwnerPawn == nullptr) return;
+
+	// get and set the Owner Controller of the Owner Pawn
+	AController* OwnerController = OwnerPawn->GetController();
+	if (OwnerController == nullptr)	return;
+
+	FVector Location;
+	FRotator Rotation;
+
+	// Get Player View Point and save en Location and Rotation
+	OwnerController->GetPlayerViewPoint(Location, Rotation);	
+
+	// Draw debug camera when you shoot
+	DrawDebugCamera(GetWorld(), Location, Rotation, 90, 2, FColor::Red, true);
 }
 
 // Called when the game starts or when spawned
