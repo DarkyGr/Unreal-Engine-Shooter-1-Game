@@ -44,9 +44,15 @@ void AGun::PullTrigger()
 
 	// Set The End Point
 	FVector End = Location + Rotation.Vector() * MaxRange;
-
-	// Line Trace
-	DrawDebugPoint(GetWorld(), Location, 50, FColor::Red, true);
+	
+	// Get Line trace of the bullet hit
+	FHitResult Hit;
+	bool bSuccess = GetWorld()->LineTraceSingleByChannel(Hit, Location, End, ECollisionChannel::ECC_GameTraceChannel1);
+	if (bSuccess)
+	{
+		// Draw Point on the hit
+		DrawDebugPoint(GetWorld(), Hit.Location, 20, FColor::Red, true);
+	}
 
 	// Draw debug camera when you shoot
 	// DrawDebugCamera(GetWorld(), Location, Rotation, 90, 2, FColor::Red, true);	

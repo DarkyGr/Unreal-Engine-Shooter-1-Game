@@ -39,7 +39,7 @@ private:
 	UPROPERTY(EditAnywhere)
 	UParticleSystem* MuzzleFlash;
 
-	// Create Variable to the Max Range
+	// Create Variable to the Max Range but the hit bullet
 	UPROPERTY(EditAnywhere)
 	float MaxRange = 1000.f;
 };
