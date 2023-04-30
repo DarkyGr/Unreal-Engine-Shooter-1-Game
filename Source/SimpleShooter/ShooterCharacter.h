@@ -27,6 +27,9 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	// Method to Take Damage 
+	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
+
 private:
 	// Method to set Move WS
 	void MoveForward(float AxisValue);
@@ -49,6 +52,14 @@ private:
 	// Varibale to Rotation (Affect FPS)
 	UPROPERTY(EditAnywhere)
 	float RotationRate = 10.f;
+	
+	// Variable to max health
+	UPROPERTY(EditDefaultsOnly);
+	float MaxHealth = 100.f;
+
+	// Variable to health
+	UPROPERTY(VisibleAnywhere);
+	float Health;
 
 	// Make Subclassof AGun
 	UPROPERTY(EditDefaultsOnly)

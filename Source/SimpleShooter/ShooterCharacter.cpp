@@ -15,6 +15,9 @@ AShooterCharacter::AShooterCharacter()
 void AShooterCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	// Set Max Health to Actor
+	Health = MaxHealth;
 	
 	// Get Spawn Actor (Gun) and set to Gun
 	Gun = GetWorld()->SpawnActor<AGun>(GunClass);
@@ -33,7 +36,6 @@ void AShooterCharacter::BeginPlay()
 void AShooterCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 // Called to bind functionality to input
@@ -64,6 +66,21 @@ void AShooterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 
 	// Set Left Mouse and Gamepad Tight Trigger for Shoot!
 	PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AShooterCharacter::Shoot);
+}
+
+float AShooterCharacter::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser)
+{
+	// Damage Applied to Actor
+	float DamageToApply = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);		
+	
+	DamageToApply = FMath::Min(Health, DamageToApply);
+
+	// Rest the Damage Applied of Helath
+	Health -= DamageToApply;
+
+	UE_LOG(LogTemp, Warning, TEXT("Health left %f"), Health);
+
+	return DamageToApply;
 }
 
 void AShooterCharacter::MoveForward(float AxisValue)
