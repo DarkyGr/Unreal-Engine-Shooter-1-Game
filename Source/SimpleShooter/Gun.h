@@ -46,4 +46,7 @@ private:
 	// Create Variable to the Max Range but the bullet hit
 	UPROPERTY(EditAnywhere)
 	float MaxRange = 1000.f;
+
+	UPROPERTY(EditAnywhere)
+	float Damage = 10.f;
 };

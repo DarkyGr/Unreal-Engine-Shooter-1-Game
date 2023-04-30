@@ -56,6 +56,19 @@ void AGun::PullTrigger()
 		// Adding Particle to Bullet Hit
 		FVector ShotDirection = -Rotation.Vector();
 		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), HitEffect, Hit.Location, ShotDirection.Rotation());
+		
+		// Set Actor based ond Hit actor
+		AActor* HitActor = Hit.GetActor();
+		if (HitActor != nullptr)
+		{
+			
+			// Adding Damage
+			FPointDamageEvent DamageEvent(Damage, Hit, ShotDirection, nullptr);
+
+			// Adding Damage
+			HitActor->TakeDamage(Damage, DamageEvent, OwnerController, this);
+		}
+		
 	}
 
 	// Draw debug camera when you shoot
