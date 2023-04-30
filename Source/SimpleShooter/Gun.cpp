@@ -60,8 +60,7 @@ void AGun::PullTrigger()
 		// Set Actor based ond Hit actor
 		AActor* HitActor = Hit.GetActor();
 		if (HitActor != nullptr)
-		{
-			
+		{			
 			// Adding Damage
 			FPointDamageEvent DamageEvent(Damage, Hit, ShotDirection, nullptr);
 
