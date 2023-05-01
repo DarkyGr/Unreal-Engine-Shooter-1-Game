@@ -2,4 +2,16 @@
 
 
 #include "ShooterAIController.h"
+#include "Kismet/GameplayStatics.h"
 
+void AShooterAIController::BeginPlay()
+{
+    Super::BeginPlay();
+
+    // Get the player pawn
+    APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+
+    // Set Focus a our player
+    SetFocus(PlayerPawn);
+
+}
