@@ -21,6 +21,10 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
+	// Function to Blueprint
+	UFUNCTION(BlueprintPure)
+	bool IsDead() const;
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
