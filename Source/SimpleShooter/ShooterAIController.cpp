@@ -22,7 +22,7 @@ void AShooterAIController::Tick(float DeltaSeconds)
         SetFocus(PlayerPawn);    
 
         // Move AI to our player
-        MoveToActor(PlayerPawn, 200);        
+        MoveToActor(PlayerPawn, AcceptanceRadius);        
     }   
     else
     {
