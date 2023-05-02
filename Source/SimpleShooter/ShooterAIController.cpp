@@ -14,4 +14,6 @@ void AShooterAIController::BeginPlay()
     // Set Focus a our player
     SetFocus(PlayerPawn);
 
+    // Move AI to our player
+    MoveToActor(PlayerPawn, 200);
 }
