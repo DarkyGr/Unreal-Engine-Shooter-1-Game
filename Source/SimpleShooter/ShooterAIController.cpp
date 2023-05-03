@@ -3,6 +3,7 @@
 
 #include "ShooterAIController.h"
 #include "Kismet/GameplayStatics.h"
+#include "BehaviorTree/BlackboardComponent.h"
 
 void AShooterAIController::BeginPlay()
 {
@@ -13,6 +14,12 @@ void AShooterAIController::BeginPlay()
     {
         // Run AIBehavior
         RunBehaviorTree(AIBehavior);
+        
+        // Get the player pawn
+        APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+
+        // Adding a new Key to Blackboard of type Vector
+        GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
     }
         
 }
