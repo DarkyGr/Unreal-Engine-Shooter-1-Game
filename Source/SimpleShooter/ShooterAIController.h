@@ -21,6 +21,11 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
+	// Variable to Radius to Enemy Close
+	// UPROPERTY(EditAnywhere)
+	// float AcceptanceRadius = 200.f;
+
+	// Variable to Behavior tree
 	UPROPERTY(EditAnywhere)
-	float AcceptanceRadius = 200.f;
+	class UBehaviorTree* AIBehavior;
 };
