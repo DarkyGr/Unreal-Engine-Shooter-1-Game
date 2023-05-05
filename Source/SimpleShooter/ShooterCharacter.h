@@ -34,6 +34,9 @@ public:
 	// Method to Take Damage 
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
 
+	// Method to shot the gun
+	void Shoot();
+
 private:
 	// Method to set Move WS
 	void MoveForward(float AxisValue);
@@ -48,10 +51,7 @@ private:
 	void LookUpRate(float AxisValue);
 
 	// Method to set Gamepad Look Right
-	void LookRightRate(float AxisValue);
-
-	// Method to shot the gun
-	void Shoot();
+	void LookRightRate(float AxisValue);	
 
 	// Varibale to Rotation (Affect FPS)
 	UPROPERTY(EditAnywhere)
