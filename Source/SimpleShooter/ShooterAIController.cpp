@@ -29,19 +29,19 @@ void AShooterAIController::Tick(float DeltaSeconds)
     Super::Tick(DeltaSeconds);
 
     // Get the player pawn
-    APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+    // APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 
-    if (LineOfSightTo(PlayerPawn))
-    {
-        // Adding a new Key to Blackboard of type Vector - Setting PLayerLocation
-        GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
+    // if (LineOfSightTo(PlayerPawn))
+    // {
+    //     // Adding a new Key to Blackboard of type Vector - Setting PLayerLocation
+    //     GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
         
-        // Setting LastKnow
-        GetBlackboardComponent()->SetValueAsVector(TEXT("LastKnowPlayerLocation"), PlayerPawn->GetActorLocation());
-    }   
-    else
-    {
-        // Clear PLayerLocation
-        GetBlackboardComponent()->ClearValue(TEXT("PlayerLocation"));
-    }
+    //     // Setting LastKnow
+    //     GetBlackboardComponent()->SetValueAsVector(TEXT("LastKnowPlayerLocation"), PlayerPawn->GetActorLocation());
+    // }   
+    // else
+    // {
+    //     // Clear PLayerLocation
+    //     GetBlackboardComponent()->ClearValue(TEXT("PlayerLocation"));
+    // }
 }
