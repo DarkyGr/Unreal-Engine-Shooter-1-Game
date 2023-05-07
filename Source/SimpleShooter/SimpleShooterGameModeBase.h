@@ -13,5 +13,8 @@ UCLASS()
 class SIMPLESHOOTER_API ASimpleShooterGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
-	
+
+public:
+	// Function to know who died
+	virtual  void PawnKilled(APawn* PawnKilled);
 };
