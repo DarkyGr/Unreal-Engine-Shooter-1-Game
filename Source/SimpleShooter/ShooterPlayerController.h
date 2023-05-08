@@ -15,6 +15,15 @@ class SIMPLESHOOTER_API AShooterPlayerController : public APlayerController
 	GENERATED_BODY()
 
 public:
+	// Method to Game Over
 	virtual void GameHasEnded(class AActor* EndGameFocus = nullptr, bool bIsWinner = false) override;
+
+private:
+	// Variable to Restart Delay
+	UPROPERTY(EditAnywhere)
+	float RestartDelay = 5.f;
+
+	//Varibale FTimerHandle to Restart the game
+	FTimerHandle RestartTimer;
 	
 };
