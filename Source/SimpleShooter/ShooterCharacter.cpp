@@ -91,12 +91,6 @@ float AShooterCharacter::TakeDamage(float DamageAmount, struct FDamageEvent cons
 	// Remove Capsule of collision for the Shooter Character
 	if (IsDead())
 	{
-		// Destroy Controller
-		DetachFromControllerPendingDestroy();
-
-		// Disbale Collision
-		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-
 		// Set our Game mode 
 		ASimpleShooterGameModeBase* GameMode = GetWorld()->GetAuthGameMode<ASimpleShooterGameModeBase>();
 
@@ -104,7 +98,13 @@ float AShooterCharacter::TakeDamage(float DamageAmount, struct FDamageEvent cons
 		{
 			// Set Pawn Killed
 			GameMode->PawnKilled(this);
-		}		
+		}	
+
+		// Destroy Controller
+		DetachFromControllerPendingDestroy();
+
+		// Disbale Collision
+		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);		
 	}
 
 	return DamageToApply;
