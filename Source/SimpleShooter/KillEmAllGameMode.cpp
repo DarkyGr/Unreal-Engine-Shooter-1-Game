@@ -15,7 +15,7 @@ void AKillEmAllGameMode::PawnKilled(APawn* PawnKilled)
     APlayerController* PlayerController = Cast<APlayerController>(PawnKilled->GetController());
     if (PlayerController != nullptr)
     {
-        PlayerController->GameHasEnded(nullptr, false);
+        EndGame(false);
     }
     
 }
@@ -41,7 +41,7 @@ void AKillEmAllGameMode::EndGame(bool bIsPlayerWinner)
 
         /*=================================*/
         bool bIsWinner = Controller->IsPlayerController() == bIsPlayerWinner;
-        Controller->GameHasEnded(nullptr, bIsWinner);
+        Controller->GameHasEnded(Controller->GetPawn(), bIsWinner);
         
     }     
 }
