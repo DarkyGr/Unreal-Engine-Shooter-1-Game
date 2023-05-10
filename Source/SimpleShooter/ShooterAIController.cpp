@@ -4,6 +4,7 @@
 #include "ShooterAIController.h"
 #include "Kismet/GameplayStatics.h"
 #include "BehaviorTree/BlackboardComponent.h"
+#include "ShooterCharacter.h"
 
 void AShooterAIController::BeginPlay()
 {
@@ -44,4 +45,16 @@ void AShooterAIController::Tick(float DeltaSeconds)
     //     // Clear PLayerLocation
     //     GetBlackboardComponent()->ClearValue(TEXT("PlayerLocation"));
     // }
+}
+
+bool AShooterAIController::IsDead() const
+{
+    // Get Pawn of the Shooter Character
+    AShooterCharacter* ControlledCharacter = Cast<AShooterCharacter>(GetPawn());
+    if (ControlledCharacter != nullptr)
+    {
+        return ControlledCharacter->IsDead();
+    }
+    
+    return true;
 }
