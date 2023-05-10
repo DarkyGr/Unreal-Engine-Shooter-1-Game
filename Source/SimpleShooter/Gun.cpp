@@ -27,40 +27,18 @@ void AGun::PullTrigger()
 
 	// Set Particles when you shoot
 	UGameplayStatics::SpawnEmitterAttached(MuzzleFlash, Mesh, TEXT("MuzzleFlashSocket"));
-	
-	// Set the Pawn of the shooter character
-	APawn* OwnerPawn = Cast<APawn>(GetOwner());
-	if (OwnerPawn == nullptr) return;
 
-	// get and set the Owner Controller of the Owner Pawn
-	AController* OwnerController = OwnerPawn->GetController();
-	if (OwnerController == nullptr)	return;
-
-	FVector Location;
-	FRotator Rotation;
-
-	// Get Player View Point and save in Location and Rotation
-	OwnerController->GetPlayerViewPoint(Location, Rotation);	
-
-	// Set The End Point
-	FVector End = Location + Rotation.Vector() * MaxRange;
-	
-	// Get Line trace of the bullet hit
 	FHitResult Hit;
+	FVector ShotDirection;
 
-	// Adding Ignores to Collisions with the AI Shooter
-	FCollisionQueryParams Params;
-	Params.AddIgnoredActor(this);
-	Params.AddIgnoredActor(GetOwner());
-
-	bool bSuccess = GetWorld()->LineTraceSingleByChannel(Hit, Location, End, ECollisionChannel::ECC_GameTraceChannel1, Params);
+	bool bSuccess = GunTrace(Hit, ShotDirection);
+	
 	if (bSuccess)
 	{
 		// Draw Point on the hit
 		// DrawDebugPoint(GetWorld(), Hit.Location, 20, FColor::Red, true);
 
-		// Adding Particle to Bullet Hit
-		FVector ShotDirection = -Rotation.Vector();
+		// Adding Particle to Bullet Hit		
 		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), HitEffect, Hit.Location, ShotDirection.Rotation());
 		
 		// Set Actor based ond Hit actor
@@ -69,6 +47,8 @@ void AGun::PullTrigger()
 		{			
 			// Adding Damage
 			FPointDamageEvent DamageEvent(Damage, Hit, ShotDirection, nullptr);
+
+			AController* OwnerController = GetOwnerController();
 
 			// Adding Damage
 			HitActor->TakeDamage(Damage, DamageEvent, OwnerController, this);
@@ -92,5 +72,42 @@ void AGun::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+bool AGun::GunTrace(FHitResult& Hit, FVector& ShotDirection)
+{
+	AController* OwnerController = GetOwnerController();
+	if (OwnerController == nullptr)	return false;
+	
+	FVector Location;
+	FRotator Rotation;
+
+	// Get Player View Point and save in Location and Rotation
+	OwnerController->GetPlayerViewPoint(Location, Rotation);
+
+	// Get Shot Direction
+	ShotDirection = -Rotation.Vector();	
+
+	// Set The End Point
+	FVector End = Location + Rotation.Vector() * MaxRange;
+
+	// Adding Ignores to Collisions with the AI Shooter
+	FCollisionQueryParams Params;
+	Params.AddIgnoredActor(this);
+	Params.AddIgnoredActor(GetOwner());
+
+	return GetWorld()->LineTraceSingleByChannel(Hit, Location, End, ECollisionChannel::ECC_GameTraceChannel1, Params);
+}
+
+AController* AGun::GetOwnerController() const
+{
+	// Set the Pawn of the shooter character
+	APawn* OwnerPawn = Cast<APawn>(GetOwner());
+	if (OwnerPawn == nullptr) 
+		return nullptr;
+
+	// get and set the Owner Controller of the Owner Pawn
+	return OwnerPawn->GetController();
+	
 }
 
