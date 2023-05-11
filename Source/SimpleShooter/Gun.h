@@ -47,6 +47,10 @@ private:
 	UPROPERTY(EditAnywhere)
 	UParticleSystem* HitEffect;
 
+	// Create USound Base when the bullet impact with a collision
+	UPROPERTY(EditAnywhere)
+	USoundBase* ImpactSound;
+
 	// Create Variable to the Max Range but the bullet hit
 	UPROPERTY(EditAnywhere)
 	float MaxRange = 1000.f;

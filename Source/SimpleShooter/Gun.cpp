@@ -43,6 +43,9 @@ void AGun::PullTrigger()
 
 		// Adding Particle to Bullet Hit		
 		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), HitEffect, Hit.Location, ShotDirection.Rotation());
+
+		// Adding sound with the bullet impact with a collision
+		UGameplayStatics::PlaySoundAtLocation(GetWorld(), ImpactSound, Hit.Location);
 		
 		// Set Actor based ond Hit actor
 		AActor* HitActor = Hit.GetActor();
