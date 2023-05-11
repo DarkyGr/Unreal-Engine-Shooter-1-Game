@@ -28,6 +28,9 @@ void AGun::PullTrigger()
 	// Set Particles when you shoot
 	UGameplayStatics::SpawnEmitterAttached(MuzzleFlash, Mesh, TEXT("MuzzleFlashSocket"));
 
+	// Set Sound attach with the socket
+	UGameplayStatics::SpawnSoundAttached(MuzzleSound, Mesh, TEXT("MuzzleFlashSocket"));
+
 	FHitResult Hit;
 	FVector ShotDirection;
 

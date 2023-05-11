@@ -39,6 +39,10 @@ private:
 	UPROPERTY(EditAnywhere)
 	UParticleSystem* MuzzleFlash;
 
+	// Create USound Base when you shoot
+	UPROPERTY(EditAnywhere)
+	USoundBase* MuzzleSound;
+
 	// Create UParticle System when bullet hit
 	UPROPERTY(EditAnywhere)
 	UParticleSystem* HitEffect;
