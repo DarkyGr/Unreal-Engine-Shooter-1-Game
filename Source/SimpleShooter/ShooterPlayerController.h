@@ -27,6 +27,10 @@ private:
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<class UUserWidget> HUDClass;
 
+	// Variable to HUD
+	UPROPERTY(EditAnywhere)
+	class UUserWidget* HUD;
+
 	// Widget of UI Win
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<class UUserWidget> WinScreenClass;

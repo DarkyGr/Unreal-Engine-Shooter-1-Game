@@ -10,7 +10,7 @@ void AShooterPlayerController::BeginPlay()
     Super::BeginPlay();
 
     // Create variable of UserWidget
-    UUserWidget* HUD = CreateWidget(this, HUDClass);
+    HUD = CreateWidget(this, HUDClass);
     if (HUD != nullptr)
     {
         // Adding Screen
@@ -23,6 +23,9 @@ void AShooterPlayerController::GameHasEnded(class AActor* EndGameFocus, bool bIs
     Super::GameHasEnded(EndGameFocus, bIsWinner);
 
     // UE_LOG(LogTemp, Warning, TEXT("We have finished!"));
+
+    // Remove HUD when the game has ended
+    HUD->RemoveFromViewport();
 
     if (bIsWinner)
     {
