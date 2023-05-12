@@ -14,11 +14,19 @@ class SIMPLESHOOTER_API AShooterPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
 public:
 	// Method to Game Over
 	virtual void GameHasEnded(class AActor* EndGameFocus = nullptr, bool bIsWinner = false) override;
 
 private:
+	// Widget of UI HUD
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class UUserWidget> HUDClass;
+
 	// Widget of UI Win
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<class UUserWidget> WinScreenClass;
